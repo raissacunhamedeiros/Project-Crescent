@@ -13,4 +13,5 @@ def show_especifico_request(show_id):
 
 def show_especifico_quantidade_request(show_id):
     quantidade = Shows.query.with_entities(Shows.quantidade).filter_by(id=show_id).first()
-    return quantidade
+    return quantidade[0]
+

@@ -35,6 +35,7 @@ def index_gerenciamento_form():
     
     return redirect(url_for('index_gerenciamento.index_gerenciamento_generator'))
 
+#mover para index usuario
 @index_gerenciamento.route('/show/imagem/<int:show_id>', methods = ['GET'])
 def exibir_imagem(show_id):
     show = Shows.query.get(show_id)
