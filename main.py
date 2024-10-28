@@ -10,7 +10,7 @@ from route.index_usuario import index_usuario
 from route.index_gerenciamento import index_gerenciamento
 from route.index_user_config import index_user_config
 from route.index_show_interface import index_show_interface
-from route.pagamento_tela import pagamento_interface
+from route.pagamento_interface import pagamento_interface
 from database import init_app, db  
 
 app = Flask(__name__)

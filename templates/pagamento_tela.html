@@ -1,9 +1,39 @@
 {% extends 'base.html' %}
 
-{% block title %}Meus Sows{% endblock %}
+{% block title %}Meus Shows{% endblock %}
 
 {% block content %}
-<p>{{ show.title }}</p>
+<div class="content">
+    <div class="first_part">
+        <form action="{{ url_for('pagamento_interface.pagamento_interface_send', show_id=show.id) }}" method="POST">
+            <label for="quantidade_ingresso">Quantidade de Ingressos: </label>
+            <input type="number" id="quantidade" name="quantidade_ingresso" value="1" min="1" max="300">
+            <input type="submit" class="botao" value="Enviar">
+        </form>
+        <p>Total: <span id="valorTotal">0</span> R$</p>
+    </div><!--first_part-->
 
+    <div class="second_part">
+        <!-- Conteúdo adicional -->
+    </div><!--second_part-->
+</div><!--content-->
 {% endblock %}
 
+{% block script %}
+<script>
+    let valor = {{ show.preco }};
+    console.log(valor);
+
+    const quantidadeInput = document.getElementById("quantidade");
+    const valorTotalDisplay = document.getElementById("valorTotal");
+
+    function atualizarValorTotal() {
+        const quantidade = parseInt(quantidadeInput.value, 10);
+        const total = quantidade * valor;
+        valorTotalDisplay.textContent = total.toFixed(2);
+    }
+
+    quantidadeInput.addEventListener("input", atualizarValorTotal);
+    atualizarValorTotal();
+</script>
+{% endblock %}

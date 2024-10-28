@@ -24,15 +24,26 @@ def pagamento_interface_generator(show_id):
 
 @pagamento_interface.route('/pagamento/interface<int:show_id>', methods = ['POST'])
 def pagamento_interface_send(show_id):
-    quantidade_ingresso = request.form.get('quantidade_ingresso')
-    #pode ser melhorado a logica
-    quantidade = show_especifico_quantidade_request(show_id)
-    if quantidade > 0:
-        quantidade = (quantidade - 1)
-        show = show_especifico_request(show_id)
-        show.quantidade = quantidade
-        db.session.commit()
+    try:
+        token = session['token']
+        id = session['id_user']
+
+        if verificar_session(token, id) == False or verificar_integridade_token(token, id) == False:
+            return redirect(url_for('login.login_generator'))
+        
+        quantidade_ingresso = request.form.get('quantidade_ingresso')
+        #pode ser melhorado a logica
+        quantidade = show_especifico_quantidade_request(show_id)
+        if quantidade > 0:
+            quantidade = (quantidade - 1)
+            show = show_especifico_request(show_id)
+            show.quantidade = quantidade
+            db.session.commit()
 
         #------------
-        
+
+    except Exception as ex:
+        print(f"erro pagamento: {ex}")
+        return redirect(url_for('login.login_generator'))
+
     return redirect(url_for('index_usuario.index_usuario_generator'))
