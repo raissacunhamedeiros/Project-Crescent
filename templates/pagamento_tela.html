@@ -7,17 +7,24 @@
     <div class="first_part">
         <form action="{{ url_for('pagamento_interface.pagamento_interface_send', show_id=show.id) }}" method="POST">
             <div class="quadrado">
-                
+                <p>{{ show.quantidade }}</p>
+                <p>{{ show.preco }}</p>
             </div><!--quadrado-->
-            <label for="quantidade_ingresso">Quantidade de Ingressos: </label>
-            <input type="number" id="quantidade" name="quantidade_ingresso" value="1" min="1" max="300">
+            <div class="gamb">
+                <p>Ingressos a comprar:</p>
+                <input type="number" id="quantidade" name="quantidade_ingresso" value="1" min="1" max="300">
+            </div><!--gamb-->
+            <p>Total: <span id="valorTotal">0</span> R$</p>
             <input type="submit" class="botao" value="Enviar">
         </form>
-        <p>Total: <span id="valorTotal">0</span> R$</p>
+       
     </div><!--first_part-->
 
     <div class="second_part">
-        <!-- Conteúdo adicional -->
+        <img src="{{ url_for('index_gerenciamento.exibir_imagem', show_id=show.id) }}" alt="">
+        <h2>{{  show.title }}</h2>
+        <p>{{ show.data}} </p>
+        <p>{{ show.local }}</p>
     </div><!--second_part-->
 </div><!--conteudo-->
 {% endblock %}
