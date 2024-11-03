@@ -8,25 +8,29 @@
 
 {% block content %}
 
-<div class="content">
+<div class="conteudo">
     <div class="first_part">
-        <p>{{ show_especifico.title }}</p>
-        <p>{{ show_especifico.local}} Local</p>
-        <p>{{ show_especifico.data }} Data</p>
-        <img src="{{ url_for('index_gerenciamento.exibir_imagem', show_id=show_especifico.id) }}" alt="show">
-        <p>Redes: Alguma rede ai</p>
-        
-        
+        <p class="title">{{ show_especifico.title }}</p>
+        <div class="conjunto">
+            <img src="{{ url_for('index_gerenciamento.exibir_imagem', show_id=show_especifico.id) }}" alt="show">
+            <p>Data: {{ show_especifico.data }}</p>
+            <p> Local: {{ show_especifico.local}}</p>
+            <p>Redes: Alguma rede ai</p>
+        </div><!--conjunto-->
     </div><!--first_part-->
 
     <div class="second_part">
-        <p>{{ show_especifico.description }}</p>
+        <div class="description">
+            <h2>Descrição</h2>
+            <p>{{ show_especifico.description }}</p>
+        </div><!--description-->
+        
         <div class="infos">
-            <p>Quantidade: {{ show_especifico.quantidade}} quantidade</p>
-            <p>Preco: {{ show_especifico.preco}} R$</p>
+            <p class="quantidade">Quantidade: {{ show_especifico.quantidade}}</p>
+            <p class="preco">Preço: {{ show_especifico.preco}} R$</p>
             <a href="{{ url_for('pagamento_interface.pagamento_interface_generator', show_id=show_especifico.id) }}">Comprar</a>
         </div><!--infos-->
     </div><!--second_part-->
-</div><!--content-->
+</div><!--conteudo-->
 
 {% endblock %}

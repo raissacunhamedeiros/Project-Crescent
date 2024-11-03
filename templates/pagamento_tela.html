@@ -3,9 +3,12 @@
 {% block title %}Meus Shows{% endblock %}
 
 {% block content %}
-<div class="content">
+<div class="conteudo">
     <div class="first_part">
         <form action="{{ url_for('pagamento_interface.pagamento_interface_send', show_id=show.id) }}" method="POST">
+            <div class="quadrado">
+                
+            </div><!--quadrado-->
             <label for="quantidade_ingresso">Quantidade de Ingressos: </label>
             <input type="number" id="quantidade" name="quantidade_ingresso" value="1" min="1" max="300">
             <input type="submit" class="botao" value="Enviar">
@@ -16,7 +19,7 @@
     <div class="second_part">
         <!-- Conteúdo adicional -->
     </div><!--second_part-->
-</div><!--content-->
+</div><!--conteudo-->
 {% endblock %}
 
 {% block script %}
