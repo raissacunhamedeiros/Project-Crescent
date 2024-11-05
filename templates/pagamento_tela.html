@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename ='css/pagamento_tela.css')}}">
+{% endblock %}
+
 {% block title %}Meus Shows{% endblock %}
 
 {% block content %}
@@ -7,8 +11,10 @@
     <div class="first_part">
         <form action="{{ url_for('pagamento_interface.pagamento_interface_send', show_id=show.id) }}" method="POST">
             <div class="quadrado">
-                <p>{{ show.quantidade }}</p>
-                <p>{{ show.preco }}</p>
+                <label for="quantidade">Quantidade de ingressos: </label>
+                <p class="quantidade" name="quantidade">{{ show.quantidade }}</p>
+                <label for="preco">Preço por ingresso: </label>
+                <p class="preco" name="preco">{{ show.preco }} R$</p>
             </div><!--quadrado-->
             <div class="gamb">
                 <p>Ingressos a comprar:</p>
@@ -17,7 +23,6 @@
             <p>Total: <span id="valorTotal">0</span> R$</p>
             <input type="submit" class="botao" value="Enviar">
         </form>
-       
     </div><!--first_part-->
 
     <div class="second_part">
