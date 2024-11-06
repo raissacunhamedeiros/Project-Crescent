@@ -12,15 +12,15 @@
         <form action="{{ url_for('pagamento_interface.pagamento_interface_send', show_id=show.id) }}" method="POST">
             <div class="quadrado">
                 <label for="quantidade">Quantidade de ingressos: </label>
-                <p class="quantidade" name="quantidade">{{ show.quantidade }}</p>
+                <p class="quantidade" name="quantidade">- {{ show.quantidade }} Ingresso(s)</p>
                 <label for="preco">Preço por ingresso: </label>
-                <p class="preco" name="preco">{{ show.preco }} R$</p>
+                <p class="preco" name="preco">- {{ show.preco }} R$</p>
             </div><!--quadrado-->
             <div class="gamb">
                 <p>Ingressos a comprar:</p>
                 <input type="number" id="quantidade" name="quantidade_ingresso" value="1" min="1" max="300">
             </div><!--gamb-->
-            <p>Total: <span id="valorTotal">0</span> R$</p>
+            <p class="total">Total: <span id="valorTotal">0</span> R$</p>
             <input type="submit" class="botao" value="Enviar">
         </form>
     </div><!--first_part-->
