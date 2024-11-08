@@ -32,10 +32,13 @@ def pagamento_interface_send(show_id):
             return redirect(url_for('login.login_generator'))
         
         quantidade_ingresso = request.form.get('quantidade_ingresso')
+
+        ingresso_int = int(quantidade_ingresso)
+        
         #pode ser melhorado a logica
         quantidade = show_especifico_quantidade_request(show_id)
         if quantidade > 0:
-            quantidade = (quantidade - 1)
+            quantidade = (quantidade - ingresso_int)
             show = show_especifico_request(show_id)
             show.quantidade = quantidade
             db.session.commit()

@@ -28,7 +28,7 @@
     <div class="second_part">
         <img src="{{ url_for('index_gerenciamento.exibir_imagem', show_id=show.id) }}" alt="">
         <h2>{{  show.title }}</h2>
-        <p>{{ show.data}} </p>
+        <p>{{ show.data }} </p>
         <p>{{ show.local }}</p>
     </div><!--second_part-->
 </div><!--conteudo-->
@@ -40,12 +40,12 @@
     console.log(valor);
 
     const quantidadeInput = document.getElementById("quantidade");
-    const valorTotalDisplay = document.getElementById("valorTotal");
+    const valorTotal = document.getElementById("valorTotal");
 
     function atualizarValorTotal() {
         const quantidade = parseInt(quantidadeInput.value, 10);
         const total = quantidade * valor;
-        valorTotalDisplay.textContent = total.toFixed(2);
+        valorTotal.textContent = total.toFixed(2);
     }
 
     quantidadeInput.addEventListener("input", atualizarValorTotal);

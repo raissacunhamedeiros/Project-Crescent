@@ -16,6 +16,7 @@ main {
     justify-content: space-around;
     background-color: rgb(206, 203, 203);
     width: 90%;
+    gap: 15%;
     padding: 3%;
     border-radius: 40px;
 }
@@ -29,8 +30,8 @@ main {
     padding: 4%;
     border-radius: 15px;
     background-color: rgb(245, 241, 241);
-    font-size: 200%;
-    width: 130%;
+    font-size: 220%;
+    width: 140%;
 }
 
 .quadrado p {
@@ -40,11 +41,12 @@ main {
 .gamb {
     display: flex;
     font-size: 190%;
+    margin-top: 10%;
 }
 
 .gamb input {
     height: 63%;
-    border-radius: 20px;
+    border-radius: 15px;
     border: none;
     width: 60px;
     background-color: rgb(231, 225, 225);
@@ -58,11 +60,44 @@ main {
 
 .botao {
     background-color: purple;
+    width: 60%;
     color: white;
     border-radius: 40px;
     border: none;
     padding: 3%;
-    font-size: 170%;
+    margin-top: 5%;
+    font-size: 180%;
+}
+
+.botao:hover {
+    transition: 1;
+    scale: 1.1;
+    background-color: rgb(105, 7, 105);
+}
+
+.second_part {
+    background-color: rgb(245, 241, 241);
+    width: 40%;
+    border-radius: 30px;
+    font-size: 160%;
+}
+
+.second_part p {
+    padding-left: 4%;
+    padding-right: 4%;
+}
+
+.second_part h2 {
+    font-weight: 700;
+    font-size: 190%;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-top: 2%;
+}
+
+.second_part img {
+    border-radius: 30px;
+    height: 51%;
 }
 
 
