@@ -2,6 +2,7 @@ from flask import redirect, render_template, Blueprint, url_for, request, sessio
 from DAO.token_verificacao import verificar_integridade_token, verificar_session
 from DAO.shows_request import show_especifico_quantidade_request, show_especifico_request
 from database.database import db
+from DAO.meus_shows_request import PegarMeusShows
 
 pagamento_interface = Blueprint('pagamento_interface', __name__)
 
@@ -41,6 +42,12 @@ def pagamento_interface_send(show_id):
             quantidade = (quantidade - ingresso_int)
             show = show_especifico_request(show_id)
             show.quantidade = quantidade
+
+            MeusShows = PegarMeusShows(show_id)
+            
+            if MeusShows:
+                MeusShows.quantidade_comprada += ingresso_int
+
             db.session.commit()
 
         #------------

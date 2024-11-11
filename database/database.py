@@ -64,6 +64,7 @@ class MeusShows(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     usuario_id = db.Column(db.Integer, db.ForeignKey('usuario.id'), nullable=False)
     show_id = db.Column(db.Integer, db.ForeignKey('shows.id'), nullable=False)
+    quantidade_comprada = db.Column(db.Integer, nullable=False)
     
     show = db.relationship('Shows', backref='meus_shows', lazy=True)
     
