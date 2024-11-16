@@ -3,13 +3,17 @@
 {% block title %}Meus Sows{% endblock %}
 
 {% block content %}
-    {% for i in meu_show %}
-    <div class="content">
-        <p>{{ i.title }}</p>
-        <p>{{ i.local }}</p>
-        <p>{{ i.data }}</p>
-        <p>{{ i.description }}</p>
-        <p>{{ i.quantidade_ingressos }}</p>
-    </div><!--content-->
-    {% endfor %}
+    {% if meu_show %}
+        {% for i in meu_show %}
+            <div class="content">
+                <p>{{ i.title }}</p>
+                <p>{{ i.local }}</p>
+                <p>{{ i.data }}</p>
+                <p>{{ i.description }}</p>
+                <p>{{ i.quantidade_ingressos }}</p>
+            </div><!--content-->
+        {% endfor %}
+    {% else %}
+        <p>{{ sem_nada }}</p>
+    {% endif %}
 {% endblock %}

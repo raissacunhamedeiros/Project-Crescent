@@ -37,7 +37,6 @@ def pagamento_interface_send(show_id):
         ingresso_int = int(quantidade_ingresso)
         
         #pode ser melhorado a logica
-        print('aaaa')
         quantidade = show_especifico_quantidade_request(show_id)
         if quantidade > 0:
             print('aqaqaq')

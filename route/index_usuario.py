@@ -34,13 +34,17 @@ def index_meus_shows_generator():
         
         meu_show = listar_shows_usuario(id)
 
-        print(meu_show)
+        if meu_show:
+            return render_template('index_meus_shows.html', meu_show=meu_show)
+        else:
+            sem_nada = "Você ainda não possui shows comprados!"
+            print(sem_nada)
+            return render_template('index_meus_shows.html', sem_nada=sem_nada)
 
     except Exception as ex:
         print(f'erro12 {ex}')
         return redirect(url_for('login.login_generator'))
         
-    return render_template('index_meus_shows.html', meu_show=meu_show)
 
 @index_usuario.route('/logout', methods = ['GET'])
 def index_usuario_logout():
