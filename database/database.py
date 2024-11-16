@@ -59,7 +59,7 @@ class Shows(db.Model):
     data = db.Column(db.Date, nullable=False)
     imagem = db.Column(db.LargeBinary, nullable=False)
 
-class Meus_shows(db.Model):
+class meus_shows(db.Model):
     __tablename__ = 'meus_shows'
     id = db.Column(db.Integer, primary_key=True)
     usuario_id = db.Column(db.Integer, db.ForeignKey('usuario.id'), nullable=False)

@@ -1,7 +1,7 @@
 from flask import redirect, render_template, Blueprint, url_for, session
 from DAO.token_verificacao import verificar_session, verificar_integridade_token
 from DAO.shows_request import shows_request
-from DAO.meus_shows_request import meus_shows
+from DAO.meus_shows_request import listar_shows_usuario
 
 
 index_usuario = Blueprint('index_usuario', __name__)
@@ -32,14 +32,15 @@ def index_meus_shows_generator():
         if verificar_session(token, id) == False or verificar_integridade_token(token, id) == False:
             return redirect(url_for('login.login_generator'))
         
-        meu_show = meus_shows(id)
+        meu_show = listar_shows_usuario(id)
+
         print(meu_show)
 
     except Exception as ex:
         print(f'erro12 {ex}')
         return redirect(url_for('login.login_generator'))
         
-    return render_template('index_meus_shows.html')
+    return render_template('index_meus_shows.html', meu_show=meu_show)
 
 @index_usuario.route('/logout', methods = ['GET'])
 def index_usuario_logout():
