@@ -1,19 +1,36 @@
 {% extends 'base.html' %}
 
-{% block title %}Meus Sows{% endblock %}
+{% block title %}Meus Shows{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index_meus_shows.css') }}">
+{% endblock %}
 
 {% block content %}
-    {% if meu_show %}
-        {% for i in meu_show %}
-            <div class="content">
-                <p>{{ i.title }}</p>
-                <p>{{ i.local }}</p>
-                <p>{{ i.data }}</p>
-                <p>{{ i.description }}</p>
-                <p>{{ i.quantidade_ingressos }}</p>
-            </div><!--content-->
-        {% endfor %}
-    {% else %}
-        <p>{{ sem_nada }}</p>
-    {% endif %}
+  {% if meu_show %}
+    <div class="content_nome_page">
+      <div class="nome_page">
+        <h1>Meus Shows</h1>
+      </div><!--nome_page-->
+    </div><!--content_nome_page-->
+
+    <div class="all_shows">
+      {% for show in meu_show %}
+        <div class="show_style">
+          <img src="{{ url_for('index_gerenciamento.exibir_imagem', show_id=show.id) }}" alt="show">
+          <h2>{{ show.title }}</h2>
+          <p class="local">{{ show.local }}</p>
+          <p class="description">{{ show.description }}</p>
+
+          <div class="rodape">
+            <p class="preco">Ingressos: {{ show.quantidade_ingressos }}</p>
+            <a href="{{ url_for('index_show_interface.index_show_interface_generator', show_id=show.id) }}">Detalhes</a>
+          </div><!--rodape-->
+        </div><!--show_style-->
+      {% endfor %}
+    </div><!--all_shows-->
+
+  {% else %}
+    <p>{{ sem_nada }}</p>
+  {% endif %}
 {% endblock %}
